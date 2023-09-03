@@ -13,22 +13,22 @@
         <img class="logo" src="images/Nabi Logo Black_1.png" alt="logo">
         <nav>
             <ul class="nav_links">
-                <li class="nav_item"><a href="#">Home</a></li>
-                <li class="nav_item"><a href="#">About Us</a></li>
-                <li class="nav_item"><a href="#">Services</a></li>
-                <li class="nav_item"><a href="#">Events</a></li>
-                <li class="nav_item"><a href="#">Contact Us</a></li>
+                <li class="nav_item"><a href="#main">Home</a></li>
+                <li class="nav_item"><a href="#about">About Us</a></li>
+                <li class="nav_item"><a href="#services">Services</a></li>
+                <li class="nav_item"><a href="#recent">Events</a></li>
+                <li class="nav_item"><a href="#ContactUs">Contact Us</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="main">
+    <section class="main" id="main">
         <div class="main-sctn">
             <img src="images/image 6.png" alt="#">
             <div class="over-grad"></div>
             <div class="overlay">
             <div class="overlay-img">
-                <img src="images/Nabi Logo Black_1.png" alt="#">
+                <img class="logo_nabi" src="images/Nabi Logo Black_1.png" alt="#">
             </div>
             <div class="overlay-text">
                 <h2>Creating events that give your guests a reason to stare</h2>
@@ -38,7 +38,7 @@
         </div>
     </section>
 
-    <section class="about">
+    <section class="about" id="about">
         <div class="about-main">
             <img src="images/leaf 2.png" alt="#">
             <div class="about-content">
@@ -55,7 +55,7 @@
         </div>-->
     </section>
 
-    <section class="services">
+    <section class="services" id="services">
         <div class="services-main">
             <div class="container">
               <div class="services-header">
@@ -132,7 +132,7 @@
 
   <!-- Recent Section -->
 
-  <section class="recent">
+  <section class="recent" id="recent">
     <div class="recent-header">
       <p>OUR UPCOMING EVENT</p>
     </div>
@@ -237,7 +237,7 @@
     <!-----------Contact Us-------------->
 
     
-    <section class="ContactUs">
+    <section class="ContactUs" id="ContactUs">
         <div class="Contact_main">
             <img class="wave" src="images/wave.svg" alt="wave">
             <div class="Contact_box">
@@ -324,7 +324,7 @@
 <script>
     function openURL() {
       // Replace 'https://example.com' with the URL you want to open
-      const url = './contact.html';
+      const url = './getintouch.html';
       
       // Open the URL in a new window or tab
       window.open(url,'_self');
@@ -336,12 +336,24 @@
   const scriptURL = 'https://script.google.com/macros/s/AKfycbyoRZxucyYpE-EYRTwK6lk-JjjXE1Rd_uyV5aOdBiXK7vNpufCZmC5ldn5OO2cwBNCy/exec'
     const form = document.forms['contactForm']
   
-    form.addEventListener('submit', e => {
+    form.addEventListener('submit', e = async()=> {
       e.preventDefault()
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => console.log('Success!', response))
-        .catch(error => console.error('Error!', error.message))
+      await fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+          alert('Successfully Submitted the Details!', response)
+          location.reload(true)
+        })
+        .catch(error => alert('Error, Could not Process Your Request', error.message))
     })
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
   </script>
   <script src="magicscroll/magicscroll.js"></script>
   <script src="app.js"></script>
