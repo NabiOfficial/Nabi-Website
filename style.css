@@ -165,6 +165,9 @@ header {
     padding: 0 0 30px 0;
     font-size: 20px;
 }
+a{
+  scroll-behavior: smooth;
+}
 
 .about-content p {
     padding:  0 0 10px 0;
@@ -242,6 +245,7 @@ header {
 
 .container .card:hover {
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
 }
 
 .card .card-header h1{
@@ -327,6 +331,7 @@ header {
 .timer div span{
   font-size: 14px;
 }
+
 
 
 /* Recent Section */
